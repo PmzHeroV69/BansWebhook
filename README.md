@@ -59,4 +59,4 @@ kick:
     "Duration": "{duration}"
 ```
 
-If there is any bug, feel free to open an issue in GitHub!
+If there is any bug, feel free to open an issue.
