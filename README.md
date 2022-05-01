@@ -1,10 +1,15 @@
 # BansWebhook
-* Sends punishment info to a discord webhook
+* Sends punishment info to a discord webhook.
 
-# Commands :
-* /bwh reload - Reloads Configuration (bwh.admin)
+# Commands
+`/bwh reload` * - Reloads configuration `bwh.admin`
 
-# Configuration :
+# Dependencies and libraries used
+* LiteBans : https://www.spigotmc.org/resources/3715/
+* AdvancedBan : https://www.spigotmc.org/resources/8695/ (https://github.com/DevLeoko/AdvancedBan) 
+* Discord-Webhooks : https://github.com/MinnDevelopment/discord-webhooks
+
+# Configuration
 ```yaml
 reload-message: "&aReloaded Configuration!"
 litebans-do-not-send-silent-punishments: true
@@ -58,5 +63,9 @@ kick:
     "Reason": "{reason}"
     "Duration": "{duration}"
 ```
+
+# Download
+* You can download this plugin from spigotmc
+* https://www.spigotmc.org/resources/95159/
 
 If there is any bug, feel free to open an issue.
