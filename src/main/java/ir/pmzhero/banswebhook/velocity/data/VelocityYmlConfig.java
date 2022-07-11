@@ -1,41 +1,41 @@
-package ir.pmzhero.banswebhook.bungeecord.data;
+package ir.pmzhero.banswebhook.velocity.data;
 
 import ir.pmzhero.banswebhook.shared.data.Pair;
 import ir.pmzhero.banswebhook.shared.data.YmlConfig;
 import lombok.RequiredArgsConstructor;
-import net.md_5.bungee.config.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
-public class BungeeYmlConfig implements YmlConfig {
+public class VelocityYmlConfig implements YmlConfig {
 
-    private final BungeeConfigFile file;
+    private final VelocityConfigFile configFile;
 
     @Override
     public String getString(String path) {
-        return file.getConfig().getString(path);
+        return (String) configFile.get(path);
     }
 
     @Override
     public boolean getBoolean(String path) {
-        return file.getConfig().getBoolean(path);
+        return (boolean) configFile.get(path);
     }
 
     @Override
     public List<Pair<String, String>> getSectionKeys(String path) {
-        Configuration section = file.getConfig().getSection(path);
+
         List<Pair<String, String>> pairs = new ArrayList<>();
 
-        for (String key : section.getKeys()) {
-            pairs.add(new Pair<>(key, section.getString(key)));
+        for (Map.Entry<String, Object> entry : configFile.getSection(path).entrySet()) {
+            pairs.add(new Pair<>(entry.getKey(), (String) entry.getValue()));
         }
         return pairs;
     }
 
     @Override
     public void reloadConfig() {
-        file.reloadConfig();
+        configFile.load();
     }
 }

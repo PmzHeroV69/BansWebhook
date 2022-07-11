@@ -12,12 +12,13 @@ import lombok.Setter;
 public class BansWebhook {
 
     private Config config;
+    private boolean webhooksLoaded = false;
     private final WebhookManager webhookManager = new WebhookManager(this);
     private final YmlConfig ymlConfig;
 
     public BansWebhook(YmlConfig ymlConfig) {
         this.ymlConfig = ymlConfig;
-        config = ConfigLoader.load(ymlConfig);
+        config = ConfigLoader.load(ymlConfig, webhookManager);
     }
 
 }

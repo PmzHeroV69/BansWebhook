@@ -3,26 +3,19 @@ package ir.pmzhero.banswebhook.spigot.data;
 import ir.pmzhero.banswebhook.shared.data.Pair;
 import ir.pmzhero.banswebhook.shared.data.YmlConfig;
 import ir.pmzhero.banswebhook.spigot.BansWebhookSpigot;
+import lombok.RequiredArgsConstructor;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.util.*;
 
+@RequiredArgsConstructor
 public class SpigotYmlConfig implements YmlConfig {
 
     private final BansWebhookSpigot plugin;
 
-    public SpigotYmlConfig(BansWebhookSpigot plugin) {
-        this.plugin = plugin;
-    }
-
     @Override
     public String getString(String path) {
         return plugin.getConfig().getString(path);
-    }
-
-    @Override
-    public int getInt(String path) {
-        return plugin.getConfig().getInt(path);
     }
 
     @Override

@@ -1,45 +1,47 @@
 package ir.pmzhero.banswebhook.shared.data;
 
-import net.md_5.bungee.api.ChatColor;
+import ir.pmzhero.banswebhook.shared.webhook.WebhookManager;
 
 public class ConfigLoader {
 
-    public static Config load(YmlConfig config) {
+    public static Config load(YmlConfig ymlConfig, WebhookManager manager) {
 
-        return new Config(
-                ChatColor.translateAlternateColorCodes('&', config.getString(ConfigPath.RELOAD_MESSAGE)),
-                config.getBoolean(ConfigPath.LITEBANS_DO_NOT_SEND_PUNISHMENT),
-                config.getBoolean(ConfigPath.INLINE_WEBHOOKS),
+        Config config = new Config(
+                ymlConfig.getString(ConfigPath.RELOAD_MESSAGE),
+                ymlConfig.getBoolean(ConfigPath.LITEBANS_DO_NOT_SEND_PUNISHMENT),
+                ymlConfig.getBoolean(ConfigPath.INLINE_WEBHOOKS),
 
-                config.getBoolean(ConfigPath.BAN_ENABLED),
-                config.getString(ConfigPath.BAN_WEBHOOK_URL),
-                config.getString(ConfigPath.BAN_WEBHOOK_TITLE),
-                config.getString(ConfigPath.BAN_WEBHOOK_THUMBNAIL),
-                Integer.parseInt(config.getString(ConfigPath.BAN_WEBHOOK_COLOR), 16),
-                config.getSectionKeys(ConfigPath.BAN_FIELDS_SECTION),
+                ymlConfig.getBoolean(ConfigPath.BAN_ENABLED),
+                ymlConfig.getString(ConfigPath.BAN_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.BAN_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.BAN_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.BAN_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.BAN_FIELDS_SECTION),
 
-                config.getBoolean(ConfigPath.MUTE_ENABLED),
-                config.getString(ConfigPath.MUTE_WEBHOOK_URL),
-                config.getString(ConfigPath.MUTE_WEBHOOK_TITLE),
-                config.getString(ConfigPath.MUTE_WEBHOOK_THUMBNAIL),
-                Integer.parseInt(config.getString(ConfigPath.MUTE_WEBHOOK_COLOR), 16),
-                config.getSectionKeys(ConfigPath.MUTE_FIELDS_SECTION),
+                ymlConfig.getBoolean(ConfigPath.MUTE_ENABLED),
+                ymlConfig.getString(ConfigPath.MUTE_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.MUTE_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.MUTE_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.MUTE_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.MUTE_FIELDS_SECTION),
 
-                config.getBoolean(ConfigPath.WARN_ENABLED),
-                config.getString(ConfigPath.WARN_WEBHOOK_URL),
-                config.getString(ConfigPath.WARN_WEBHOOK_TITLE),
-                config.getString(ConfigPath.WARN_WEBHOOK_THUMBNAIL),
-                Integer.parseInt(config.getString(ConfigPath.WARN_WEBHOOK_COLOR), 16),
-                config.getSectionKeys(ConfigPath.WARN_FIELDS_SECTION),
+                ymlConfig.getBoolean(ConfigPath.WARN_ENABLED),
+                ymlConfig.getString(ConfigPath.WARN_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.WARN_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.WARN_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.WARN_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.WARN_FIELDS_SECTION),
 
-                config.getBoolean(ConfigPath.KICK_ENABLED),
-                config.getString(ConfigPath.KICK_WEBHOOK_URL),
-                config.getString(ConfigPath.KICK_WEBHOOK_TITLE),
-                config.getString(ConfigPath.KICK_WEBHOOK_THUMBNAIL),
-                Integer.parseInt(config.getString(ConfigPath.KICK_WEBHOOK_COLOR), 16),
-                config.getSectionKeys(ConfigPath.KICK_FIELDS_SECTION)
+                ymlConfig.getBoolean(ConfigPath.KICK_ENABLED),
+                ymlConfig.getString(ConfigPath.KICK_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.KICK_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.KICK_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.KICK_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.KICK_FIELDS_SECTION)
         );
 
+        manager.loadWebhookClients(config);
+        return config;
     }
 
 }

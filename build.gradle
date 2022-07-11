@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'ir.pmzhero'
-version = '2.0'
+version = '2.1'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
@@ -13,15 +13,18 @@ repositories {
     maven { url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url = 'https://oss.sonatype.org/content/groups/public/' }
     maven { url = 'https://jitpack.io' }
+    maven { url = 'https://repo.velocitypowered.com/snapshots/' }
 }
 
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     compileOnly 'org.spigotmc:spigot-api:1.13-R0.1-SNAPSHOT'
     compileOnly 'net.md-5:bungeecord-api:1.16-R0.4'
+    compileOnly 'com.velocitypowered:velocity-api:3.1.0'
     compileOnly 'com.gitlab.ruany:LiteBansAPI:0.3.4'
     compileOnly files('lib/AdvancedBan.jar')
-    implementation 'club.minnced:discord-webhooks:0.8.0'
+    implementation 'org.yaml:snakeyaml:1.30'
+    implementation 'club.minnced:discord-webhooks:0.8.2'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 }
 
@@ -41,7 +44,7 @@ processResources {
     def props = [version: version]
     inputs.properties props
     filteringCharset 'UTF-8'
-    filesMatching(Arrays.asList("plugin.yml", "bungee.yml")) {
+    filesMatching(Arrays.asList("plugin.yml", "bungee.yml", "velocity-plugin.json")) {
         expand props
     }
 }

@@ -6,8 +6,6 @@ public interface YmlConfig {
 
     String getString(String path);
 
-    int getInt(String path);
-
     boolean getBoolean(String path);
 
     List<Pair<String, String>> getSectionKeys(String path);

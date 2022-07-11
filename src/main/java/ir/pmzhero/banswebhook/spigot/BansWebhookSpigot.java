@@ -42,7 +42,11 @@ public class BansWebhookSpigot extends JavaPlugin {
 
         getCommand("bwh").setExecutor(new CommandMainSpigot(core));
 
-        Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Successfully Enabled BansWebhook " + ChatColor.GRAY + "$(version)" + ChatColor.GREEN + " by PmzHero (Hooked with " + hook + ")");
+        if (core.isWebhooksLoaded()) {
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Successfully Enabled BansWebhook " + ChatColor.GRAY + "$(version)" + ChatColor.GREEN + " by PmzHero (Hooked with " + hook + ")");
+        } else {
+            getLogger().severe("Webhooks can't be loaded!");
+        }
     }
 
 }
