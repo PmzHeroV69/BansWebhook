@@ -3,6 +3,7 @@
 
 # Commands
 * - /bwh reload : Reloads configuration  `bwh.admin`
+* - /bwh debug <type> : Sends a debug Webhook with the given type  `bwh.admin`
 
 # Dependencies and libraries used
 * LiteBans : https://www.spigotmc.org/resources/3715/
