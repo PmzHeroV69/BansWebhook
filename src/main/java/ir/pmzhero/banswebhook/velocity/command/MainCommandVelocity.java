@@ -19,7 +19,7 @@ public class MainCommandVelocity implements SimpleCommand {
         CommandSource source = invocation.source();
         String[] args = invocation.arguments();
 
-        if (!invocation.source().hasPermission("bwh.admin")) {
+        if (!source.hasPermission("bwh.admin")) {
             source.sendMessage(Component.text("§cYou are not allowed to use this command!"));
             return;
         }
