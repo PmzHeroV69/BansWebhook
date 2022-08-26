@@ -1,7 +1,7 @@
-package ir.pmzhero.banswebhook.shared.litebans;
+package ir.pmzhero.banswebhook.common.litebans;
 
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.data.Config;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.data.Config;
 import litebans.api.Database;
 import litebans.api.Entry;
 import litebans.api.Events;

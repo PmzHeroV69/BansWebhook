@@ -1,9 +1,9 @@
-package ir.pmzhero.banswebhook.shared;
+package ir.pmzhero.banswebhook.common;
 
-import ir.pmzhero.banswebhook.shared.data.Config;
-import ir.pmzhero.banswebhook.shared.data.ConfigLoader;
-import ir.pmzhero.banswebhook.shared.data.YmlConfig;
-import ir.pmzhero.banswebhook.shared.webhook.WebhookManager;
+import ir.pmzhero.banswebhook.common.data.Config;
+import ir.pmzhero.banswebhook.common.data.ConfigLoader;
+import ir.pmzhero.banswebhook.common.data.YmlConfig;
+import ir.pmzhero.banswebhook.common.webhook.WebhookManager;
 import lombok.Getter;
 import lombok.Setter;
 

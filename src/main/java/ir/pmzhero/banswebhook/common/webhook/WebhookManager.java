@@ -1,11 +1,11 @@
-package ir.pmzhero.banswebhook.shared.webhook;
+package ir.pmzhero.banswebhook.common.webhook;
 
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.send.WebhookEmbed;
 import club.minnced.discord.webhook.send.WebhookEmbedBuilder;
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.data.Config;
-import ir.pmzhero.banswebhook.shared.data.Pair;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.data.Config;
+import ir.pmzhero.banswebhook.common.data.Pair;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -26,7 +26,6 @@ public class WebhookManager {
                 .setTitle(new WebhookEmbed.EmbedTitle(title, ""))
                 .setThumbnailUrl(thumbnail)
                 .setColor(color);
-
         for (WebhookEmbed.EmbedField field : fields) {
             builder.addField(field);
         }

@@ -2,11 +2,10 @@ package ir.pmzhero.banswebhook.velocity.command;
 
 import com.velocitypowered.api.command.CommandSource;
 import com.velocitypowered.api.command.SimpleCommand;
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.data.ConfigLoader;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.data.ConfigLoader;
 import lombok.RequiredArgsConstructor;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 @RequiredArgsConstructor
@@ -20,8 +19,13 @@ public class MainCommandVelocity implements SimpleCommand {
         CommandSource source = invocation.source();
         String[] args = invocation.arguments();
 
+        if (!invocation.source().hasPermission("bwh.admin")) {
+            source.sendMessage(Component.text("§cYou are not allowed to use this command!"));
+            return;
+        }
+
         if (args.length == 0) {
-            source.sendMessage(Component.text("/bwh <reload/debug>").color(NamedTextColor.RED));
+            source.sendMessage(Component.text("§c/bwh <reload/debug>"));
             return;
         }
 
@@ -33,34 +37,29 @@ public class MainCommandVelocity implements SimpleCommand {
                 if (core.isWebhooksLoaded()) {
                     source.sendMessage(LegacyComponentSerializer.builder().character('&').extractUrls().build().deserialize(core.getConfig().getReloadMessage()));
                 } else {
-                    source.sendMessage(Component.text("Webhooks can't be loaded!").color(NamedTextColor.RED));
+                    source.sendMessage(Component.text("§cWebhooks can't be loaded!"));
                 }
                 break;
             case "debug":
                 if (args.length != 2) {
-                    source.sendMessage(Component.text("/bwh debug <ban/kick/warn/mute>").color(NamedTextColor.RED));
+                    source.sendMessage(Component.text("§c/bwh debug <ban/kick/warn/mute>"));
                     return;
                 }
 
                 String type = args[1];
 
                 if (!(type.equals("ban") || type.equals("kick") || type.equals("warn") || type.equals("mute"))) {
-                    source.sendMessage(Component.text("/bwh debug <ban/kick/warn/mute>").color(NamedTextColor.RED));
+                    source.sendMessage(Component.text("§c/bwh debug <ban/kick/warn/mute>"));
                     return;
                 }
 
                 core.getWebhookManager().sendPunishmentWebhook("Debug", "Debug", "Debug", "Debug", type);
 
-                source.sendMessage(Component.text("SENT DEBUG").color(NamedTextColor.GREEN));
+                source.sendMessage(Component.text("§aSENT DEBUG"));
                 break;
             default:
-                source.sendMessage(Component.text("/bwh <reload/debug>").color(NamedTextColor.RED));
+                source.sendMessage(Component.text("§c/bwh <reload/debug>"));
                 break;
         }
-    }
-
-    @Override
-    public boolean hasPermission(Invocation invocation) {
-        return invocation.source().hasPermission("bwh.admin");
     }
 }

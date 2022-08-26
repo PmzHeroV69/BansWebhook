@@ -1,6 +1,6 @@
-package ir.pmzhero.banswebhook.shared.advancedban;
+package ir.pmzhero.banswebhook.common.advancedban;
 
-import ir.pmzhero.banswebhook.shared.BansWebhook;
+import ir.pmzhero.banswebhook.common.BansWebhook;
 import me.leoko.advancedban.utils.Punishment;
 import me.leoko.advancedban.utils.PunishmentType;
 

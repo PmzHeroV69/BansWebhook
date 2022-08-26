@@ -1,7 +1,7 @@
 package ir.pmzhero.banswebhook.bungeecord.listener;
 
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.advancedban.AdvancedBanEventHandler;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.advancedban.AdvancedBanEventHandler;
 import lombok.RequiredArgsConstructor;
 import me.leoko.advancedban.bungee.event.PunishmentEvent;
 import net.md_5.bungee.api.plugin.Listener;

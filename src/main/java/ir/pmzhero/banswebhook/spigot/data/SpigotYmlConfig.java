@@ -1,7 +1,7 @@
 package ir.pmzhero.banswebhook.spigot.data;
 
-import ir.pmzhero.banswebhook.shared.data.Pair;
-import ir.pmzhero.banswebhook.shared.data.YmlConfig;
+import ir.pmzhero.banswebhook.common.data.Pair;
+import ir.pmzhero.banswebhook.common.data.YmlConfig;
 import ir.pmzhero.banswebhook.spigot.BansWebhookSpigot;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.configuration.ConfigurationSection;

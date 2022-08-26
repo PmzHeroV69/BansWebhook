@@ -1,7 +1,7 @@
 package ir.pmzhero.banswebhook.spigot.listener;
 
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.advancedban.AdvancedBanEventHandler;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.advancedban.AdvancedBanEventHandler;
 import lombok.RequiredArgsConstructor;
 import me.leoko.advancedban.bukkit.event.PunishmentEvent;
 import org.bukkit.event.EventHandler;

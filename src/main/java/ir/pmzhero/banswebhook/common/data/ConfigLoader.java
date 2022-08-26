@@ -1,6 +1,6 @@
-package ir.pmzhero.banswebhook.shared.data;
+package ir.pmzhero.banswebhook.common.data;
 
-import ir.pmzhero.banswebhook.shared.webhook.WebhookManager;
+import ir.pmzhero.banswebhook.common.webhook.WebhookManager;
 
 public class ConfigLoader {
 

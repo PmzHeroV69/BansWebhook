@@ -1,4 +1,4 @@
-package ir.pmzhero.banswebhook.shared.data;
+package ir.pmzhero.banswebhook.common.data;
 
 public class ConfigPath {
 

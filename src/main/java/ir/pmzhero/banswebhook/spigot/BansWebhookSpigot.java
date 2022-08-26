@@ -1,7 +1,7 @@
 package ir.pmzhero.banswebhook.spigot;
 
-import ir.pmzhero.banswebhook.shared.BansWebhook;
-import ir.pmzhero.banswebhook.shared.litebans.LitebansListener;
+import ir.pmzhero.banswebhook.common.BansWebhook;
+import ir.pmzhero.banswebhook.common.litebans.LitebansListener;
 import ir.pmzhero.banswebhook.spigot.command.CommandMainSpigot;
 import ir.pmzhero.banswebhook.spigot.data.SpigotYmlConfig;
 import ir.pmzhero.banswebhook.spigot.listener.AdvancedBanPunishmentListener;
@@ -48,5 +48,4 @@ public class BansWebhookSpigot extends JavaPlugin {
             getLogger().severe("Webhooks can't be loaded!");
         }
     }
-
 }

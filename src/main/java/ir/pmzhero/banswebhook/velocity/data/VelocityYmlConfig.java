@@ -1,7 +1,7 @@
 package ir.pmzhero.banswebhook.velocity.data;
 
-import ir.pmzhero.banswebhook.shared.data.Pair;
-import ir.pmzhero.banswebhook.shared.data.YmlConfig;
+import ir.pmzhero.banswebhook.common.data.Pair;
+import ir.pmzhero.banswebhook.common.data.YmlConfig;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
