@@ -13,6 +13,7 @@
 # Configuration
 ```yaml
 reload-message: "&aReloaded Configuration!"
+permanent-duration-translation: "Permanent"
 litebans-do-not-send-silent-punishments: true
 inline-webhooks: false
 
@@ -24,6 +25,7 @@ ban:
   webhook-color: "ff0000"
   fields:
     "Banned by": "{executor}"
+    "ID": "{id}"
     "Username": "{player}"
     "Reason": "{reason}"
     "Duration": "{duration}"
@@ -36,6 +38,7 @@ mute:
   webhook-color: "ff0000"
   fields:
     "Banned by": "{executor}"
+    "ID": "{id}"
     "Username": "{player}"
     "Reason": "{reason}"
     "Duration": "{duration}"
@@ -48,6 +51,7 @@ warn:
   webhook-color: "ff0000"
   fields:
     "Banned by": "{executor}"
+    "ID": "{id}"
     "Username": "{player}"
     "Reason": "{reason}"
     "Duration": "{duration}"
@@ -60,13 +64,50 @@ kick:
   webhook-color: "ff0000"
   fields:
     "Banned by": "{executor}"
+    "ID": "{id}"
     "Username": "{player}"
     "Reason": "{reason}"
     "Duration": "{duration}"
+
+unban:
+  enabled: true
+  webhook-url: "enter-url-here"
+  webhook-title: "Player Unbanned!"
+  webhook-thumbnail: ""
+  webhook-color: "ff0000"
+  fields:
+    "Unbanned by": "{executor}"
+    "ID": "{id}"
+    "Username": "{player}"
+    "Reason": "{reason}"
+
+unmute:
+  enabled: true
+  webhook-url: "enter-url-here"
+  webhook-title: "Player Unmuted!"
+  webhook-thumbnail: ""
+  webhook-color: "ff0000"
+  fields:
+    "Unmuted by": "{executor}"
+    "ID": "{id}"
+    "Username": "{player}"
+    "Reason": "{reason}"
+
+unwarn:
+  enabled: true
+  webhook-url: "enter-url-here"
+  webhook-title: "Player Unwarned!"
+  webhook-thumbnail: ""
+  webhook-color: "ff0000"
+  fields:
+    "Unwarned by": "{executor}"
+    "ID": "{id}"
+    "Username": "{player}"
+    "Reason": "{reason}"
 ```
 
 # Download
-* You can download this plugin from spigotmc
+* You can download this plugin from SpigotMC
 * https://www.spigotmc.org/resources/95159/
 
 If there is any bug, feel free to open an issue.
