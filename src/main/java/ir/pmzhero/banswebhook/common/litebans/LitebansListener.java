@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class LitebansListener extends Events.Listener {
+public final class LitebansListener extends Events.Listener {
 
     private final List<String> allowed = Arrays.asList("ban", "mute", "warn", "kick");
     private final BansWebhook core;
@@ -25,7 +25,15 @@ public class LitebansListener extends Events.Listener {
 
     @Override
     public void entryAdded(Entry entry) {
+        handleEntry(entry, false);
+    }
 
+    @Override
+    public void entryRemoved(Entry entry) {
+        handleEntry(entry, true);
+    }
+
+    private void handleEntry(Entry entry, boolean revoke) {
         String type = entry.getType();
         Config config = core.getConfig();
 
@@ -49,13 +57,16 @@ public class LitebansListener extends Events.Listener {
                     executor = "Unknown";
                 }
                 String name = result.getString("name");
+                String duration = entry.getDurationString();
+                if (duration.equals("forever")) {
+                    duration = config.getPermanentDurationTranslation();
+                }
 
-                core.getWebhookManager().sendPunishmentWebhook(executor, name, entry.getReason(), entry.getDurationString(), entry.getType());
+                core.getWebhookManager().sendPunishmentWebhook(executor, entry.getId(), name, entry.getReason(), duration, (revoke ? "un" : "") + type);
             }
 
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 }

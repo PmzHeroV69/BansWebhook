@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-public class BungeeConfigFile {
+@SuppressWarnings("ResultOfMethodCallIgnored")
+public final class BungeeConfigFile {
 
     private final BansWebhookBungee plugin;
     private final String fileName;
@@ -32,13 +33,6 @@ public class BungeeConfigFile {
         return configuration;
     }
 
-    public void saveConfig() {
-        try {
-            ConfigurationProvider.getProvider(YamlConfiguration.class).save(configuration, new File(plugin.getDataFolder(), fileName));
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
     public void reloadConfig() {
         try {
             configuration = ConfigurationProvider.getProvider(YamlConfiguration.class).load(new File(plugin.getDataFolder(), fileName));
@@ -53,7 +47,6 @@ public class BungeeConfigFile {
             plugin.getDataFolder().mkdir();
 
         File file = new File(plugin.getDataFolder(), fileName);
-
 
         if (!file.exists()) {
             try (InputStream in = plugin.getResourceAsStream(fileName)) {

@@ -6,10 +6,11 @@ import ir.pmzhero.banswebhook.spigot.BansWebhookSpigot;
 import lombok.RequiredArgsConstructor;
 import org.bukkit.configuration.ConfigurationSection;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
-public class SpigotYmlConfig implements YmlConfig {
+public final class SpigotYmlConfig implements YmlConfig {
 
     private final BansWebhookSpigot plugin;
 
@@ -28,6 +29,7 @@ public class SpigotYmlConfig implements YmlConfig {
         ConfigurationSection section = plugin.getConfig().getConfigurationSection(path);
         List<Pair<String, String>> pairs = new ArrayList<>();
 
+        assert section != null;
         for (String key : section.getKeys(false)) {
             pairs.add(new Pair<>(key, section.getString(key)));
         }

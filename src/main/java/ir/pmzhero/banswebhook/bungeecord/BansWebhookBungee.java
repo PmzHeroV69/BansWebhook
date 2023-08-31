@@ -11,11 +11,10 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Plugin;
 import net.md_5.bungee.api.plugin.PluginManager;
 
-public class BansWebhookBungee extends Plugin {
+public final class BansWebhookBungee extends Plugin {
 
     @Override
     public void onEnable() {
-
         BungeeConfigFile configFile = new BungeeConfigFile(this, "config.yml");
         BansWebhook core = new BansWebhook(new BungeeYmlConfig(configFile));
 

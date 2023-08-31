@@ -11,10 +11,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
 import java.util.logging.Logger;
 
 @Getter
-public class BansWebhookSpigot extends JavaPlugin {
+public final class BansWebhookSpigot extends JavaPlugin {
 
     private BansWebhook core;
 
@@ -40,7 +41,7 @@ public class BansWebhookSpigot extends JavaPlugin {
             return;
         }
 
-        getCommand("bwh").setExecutor(new CommandMainSpigot(core));
+        Objects.requireNonNull(getCommand("bwh")).setExecutor(new CommandMainSpigot(core));
 
         if (core.isWebhooksLoaded()) {
             Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Successfully Enabled BansWebhook " + ChatColor.GRAY + "$(version)" + ChatColor.GREEN + " by PmzHero (Hooked with " + hook + ")");

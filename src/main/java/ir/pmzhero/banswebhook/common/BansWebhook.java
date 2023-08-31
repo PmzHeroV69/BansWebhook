@@ -9,12 +9,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BansWebhook {
+public final class BansWebhook {
 
-    private Config config;
-    private boolean webhooksLoaded = false;
     private final WebhookManager webhookManager = new WebhookManager(this);
     private final YmlConfig ymlConfig;
+    private Config config;
+    private boolean webhooksLoaded = false;
 
     public BansWebhook(YmlConfig ymlConfig) {
         this.ymlConfig = ymlConfig;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class BungeeYmlConfig implements YmlConfig {
+public final class BungeeYmlConfig implements YmlConfig {
 
     private final BungeeConfigFile file;
 

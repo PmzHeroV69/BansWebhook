@@ -18,14 +18,13 @@ import java.io.File;
 import java.nio.file.Path;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
-public class BansWebhookVelocity {
+public final class BansWebhookVelocity {
 
     private final BansWebhook core;
     private final ProxyServer server;
 
     @Inject
     public BansWebhookVelocity(ProxyServer server, Logger logger, @DataDirectory Path dataDirectory) {
-
         this.server = server;
 
         File file = dataDirectory.toFile();

@@ -7,9 +7,10 @@ import java.util.List;
 
 @Getter
 @RequiredArgsConstructor
-public class Config {
+public final class Config {
 
     private final String reloadMessage;
+    private final String permanentDurationTranslation;
     private final boolean doNotSendSilent;
     private final boolean inlineWebhooks;
 
@@ -41,4 +42,24 @@ public class Config {
     private final int kickWebhookColor;
     private final List<Pair<String, String>> kickWebhookFields;
 
+    private final boolean unbanEnabled;
+    private final String unbanWebhookUrl;
+    private final String unbanWebhookTitle;
+    private final String unbanWebhookThumbnail;
+    private final int unbanWebhookColor;
+    private final List<Pair<String, String>> unbanWebhookFields;
+
+    private final boolean unmuteEnabled;
+    private final String unmuteWebhookUrl;
+    private final String unmuteWebhookTitle;
+    private final String unmuteWebhookThumbnail;
+    private final int unmuteWebhookColor;
+    private final List<Pair<String, String>> unmuteWebhookFields;
+
+    private final boolean unwarnEnabled;
+    private final String unwarnWebhookUrl;
+    private final String unwarnWebhookTitle;
+    private final String unwarnWebhookThumbnail;
+    private final int unwarnWebhookColor;
+    private final List<Pair<String, String>> unwarnWebhookFields;
 }

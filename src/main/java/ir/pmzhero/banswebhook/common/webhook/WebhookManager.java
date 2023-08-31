@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 @RequiredArgsConstructor
-public class WebhookManager {
+public final class WebhookManager {
 
     private final BansWebhook bansWebhook;
 
@@ -19,6 +19,9 @@ public class WebhookManager {
     private WebhookClient muteClient;
     private WebhookClient warnClient;
     private WebhookClient kickClient;
+    private WebhookClient unbanClient;
+    private WebhookClient unmuteClient;
+    private WebhookClient unwarnClient;
 
     public void sendWebhook(WebhookClient client, String title, String thumbnail, int color, WebhookEmbed.EmbedField... fields) {
 
@@ -33,7 +36,7 @@ public class WebhookManager {
         client.send(builder.build());
     }
 
-    public void sendPunishmentWebhook(String executor, String name, String reason, String duration, String type) {
+    public void sendPunishmentWebhook(String executor, long id, String name, String reason, String duration, String type) {
 
         Config config = bansWebhook.getConfig();
         WebhookClient client;
@@ -53,6 +56,7 @@ public class WebhookManager {
                 color = config.getBanWebhookColor();
                 pairs = config.getBanWebhookFields();
                 break;
+
             case "mute":
                 client = muteClient;
                 enabled = config.isMuteEnabled();
@@ -61,6 +65,7 @@ public class WebhookManager {
                 color = config.getMuteWebhookColor();
                 pairs = config.getMuteWebhookFields();
                 break;
+
             case "warn":
                 client = warnClient;
                 enabled = config.isWarnEnabled();
@@ -69,6 +74,7 @@ public class WebhookManager {
                 color = config.getWarnWebhookColor();
                 pairs = config.getWarnWebhookFields();
                 break;
+
             case "kick":
                 client = kickClient;
                 enabled = config.isKickEnabled();
@@ -76,6 +82,33 @@ public class WebhookManager {
                 thumbnail = config.getKickWebhookThumbnail();
                 color = config.getKickWebhookColor();
                 pairs = config.getKickWebhookFields();
+                break;
+
+            case "unban":
+                client = unbanClient;
+                enabled = config.isUnbanEnabled();
+                title = config.getUnbanWebhookTitle();
+                thumbnail = config.getUnbanWebhookThumbnail();
+                color = config.getUnbanWebhookColor();
+                pairs = config.getUnbanWebhookFields();
+                break;
+
+            case "unmute":
+                client = unmuteClient;
+                enabled = config.isUnmuteEnabled();
+                title = config.getUnmuteWebhookTitle();
+                thumbnail = config.getUnmuteWebhookThumbnail();
+                color = config.getUnmuteWebhookColor();
+                pairs = config.getUnmuteWebhookFields();
+                break;
+
+            case "unwarn":
+                client = unwarnClient;
+                enabled = config.isUnwarnEnabled();
+                title = config.getUnwarnWebhookTitle();
+                thumbnail = config.getUnwarnWebhookThumbnail();
+                color = config.getUnwarnWebhookColor();
+                pairs = config.getUnwarnWebhookFields();
                 break;
             default:
                 return;
@@ -92,6 +125,7 @@ public class WebhookManager {
             i++;
             String value = pair.getValue()
                     .replace("{executor}", executor)
+                    .replace("{id}", String.valueOf(id))
                     .replace("{player}", name)
                     .replace("{reason}", reason)
                     .replace("{duration}", duration);
@@ -101,6 +135,7 @@ public class WebhookManager {
 
         title = title
                 .replace("{executor}", executor)
+                .replace("{id}", String.valueOf(id))
                 .replace("{player}", name)
                 .replace("{reason}", reason)
                 .replace("{duration}", duration);
@@ -114,6 +149,9 @@ public class WebhookManager {
             this.muteClient = WebhookClient.withUrl(config.getMuteWebhookUrl());
             this.warnClient = WebhookClient.withUrl(config.getWarnWebhookUrl());
             this.kickClient = WebhookClient.withUrl(config.getKickWebhookUrl());
+            this.unbanClient = WebhookClient.withUrl(config.getUnbanWebhookUrl());
+            this.unmuteClient = WebhookClient.withUrl(config.getUnmuteWebhookUrl());
+            this.unwarnClient = WebhookClient.withUrl(config.getUnwarnWebhookUrl());
             bansWebhook.setWebhooksLoaded(true);
         } catch (Exception ignored) {
             bansWebhook.setWebhooksLoaded(false);

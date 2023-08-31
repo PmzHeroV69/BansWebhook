@@ -2,12 +2,12 @@ package ir.pmzhero.banswebhook.common.data;
 
 import ir.pmzhero.banswebhook.common.webhook.WebhookManager;
 
-public class ConfigLoader {
+public final class ConfigLoader {
 
     public static Config load(YmlConfig ymlConfig, WebhookManager manager) {
-
         Config config = new Config(
                 ymlConfig.getString(ConfigPath.RELOAD_MESSAGE),
+                ymlConfig.getString(ConfigPath.PERMANENT_DURATION_TRANSLATION),
                 ymlConfig.getBoolean(ConfigPath.LITEBANS_DO_NOT_SEND_PUNISHMENT),
                 ymlConfig.getBoolean(ConfigPath.INLINE_WEBHOOKS),
 
@@ -37,7 +37,28 @@ public class ConfigLoader {
                 ymlConfig.getString(ConfigPath.KICK_WEBHOOK_TITLE),
                 ymlConfig.getString(ConfigPath.KICK_WEBHOOK_THUMBNAIL),
                 Integer.parseInt(ymlConfig.getString(ConfigPath.KICK_WEBHOOK_COLOR), 16),
-                ymlConfig.getSectionKeys(ConfigPath.KICK_FIELDS_SECTION)
+                ymlConfig.getSectionKeys(ConfigPath.KICK_FIELDS_SECTION),
+
+                ymlConfig.getBoolean(ConfigPath.UNBAN_ENABLED),
+                ymlConfig.getString(ConfigPath.UNBAN_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.UNBAN_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.UNBAN_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.UNBAN_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.UNBAN_FIELDS_SECTION),
+
+                ymlConfig.getBoolean(ConfigPath.UNMUTE_ENABLED),
+                ymlConfig.getString(ConfigPath.UNMUTE_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.UNMUTE_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.UNMUTE_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.UNMUTE_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.UNMUTE_FIELDS_SECTION),
+
+                ymlConfig.getBoolean(ConfigPath.UNWARN_ENABLED),
+                ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.UNWARN_FIELDS_SECTION)
         );
 
         manager.loadWebhookClients(config);

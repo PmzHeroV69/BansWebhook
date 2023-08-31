@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 @RequiredArgsConstructor
-public class VelocityYmlConfig implements YmlConfig {
+public final class VelocityYmlConfig implements YmlConfig {
 
     private final VelocityConfigFile configFile;
 

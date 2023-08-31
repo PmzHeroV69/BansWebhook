@@ -1,9 +1,16 @@
 {
-  "id":"banswebhook",
-  "name":"BansWebhook",
-  "version":"${version}",
-  "description":"Sends punishment info to a discord webhook",
-  "authors":["PmzHero"],
-  "dependencies":[{"id": "litebans", "optional": false}],
-  "main":"ir.pmzhero.banswebhook.velocity.BansWebhookVelocity"
+  "id": "banswebhook",
+  "name": "BansWebhook",
+  "version": "${version}",
+  "description": "Sends punishment info to a discord webhook",
+  "authors": [
+    "PmzHero"
+  ],
+  "dependencies": [
+    {
+      "id": "litebans",
+      "optional": false
+    }
+  ],
+  "main": "ir.pmzhero.banswebhook.velocity.BansWebhookVelocity"
 }

@@ -7,18 +7,18 @@ import org.yaml.snakeyaml.Yaml;
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 @SuppressWarnings("unchecked")
-public class VelocityConfigFile {
-
-    @Getter
-    private Map<String, Object> config;
+public final class VelocityConfigFile {
 
     private final Path dataDirectory;
     private final String fileName;
+    @Getter
+    private Map<String, Object> config;
 
     public VelocityConfigFile(Path dataDirectory, String fileName) {
         this.dataDirectory = dataDirectory;
@@ -31,7 +31,7 @@ public class VelocityConfigFile {
         File file = saveResource(dataDirectory, fileName);
         assert file != null;
 
-        this.config = new Yaml().load(new FileInputStream(file));
+        this.config = new Yaml().load(Files.newInputStream(file.toPath()));
     }
 
     @SneakyThrows
@@ -52,7 +52,7 @@ public class VelocityConfigFile {
             connection.setUseCaches(false);
 
             InputStream in = connection.getInputStream();
-            OutputStream out = new FileOutputStream(configFile);
+            OutputStream out = Files.newOutputStream(configFile.toPath());
 
             byte[] buf = new byte[1024];
             int len;

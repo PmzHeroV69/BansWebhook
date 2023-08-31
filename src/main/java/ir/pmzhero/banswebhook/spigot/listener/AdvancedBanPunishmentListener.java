@@ -4,6 +4,7 @@ import ir.pmzhero.banswebhook.common.BansWebhook;
 import ir.pmzhero.banswebhook.common.advancedban.AdvancedBanEventHandler;
 import lombok.RequiredArgsConstructor;
 import me.leoko.advancedban.bukkit.event.PunishmentEvent;
+import me.leoko.advancedban.bukkit.event.RevokePunishmentEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 
@@ -14,7 +15,11 @@ public class AdvancedBanPunishmentListener implements Listener {
 
     @EventHandler
     public void onPunishment(PunishmentEvent event) {
-        AdvancedBanEventHandler.handle(event.getPunishment(), core);
+        AdvancedBanEventHandler.handle(event.getPunishment(), core, false);
     }
 
+    @EventHandler
+    public void onRevokePunishment(RevokePunishmentEvent event) {
+        AdvancedBanEventHandler.handle(event.getPunishment(), core, true);
+    }
 }
