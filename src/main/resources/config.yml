@@ -90,3 +90,12 @@ unwarn:
     "ID": "{id}"
     "Username": "{player}"
     "Reason": "{reason}"
+
+alts:
+  enabled: false
+  webhook-url: "enter-url-here"
+  webhook-title: "Banned Alt Account Detected!"
+  webhook-thumbnail: ""
+  webhook-color: "ff0000"
+  fields:
+    "Alts": "{players}"

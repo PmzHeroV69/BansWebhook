@@ -55,4 +55,11 @@ public final class ConfigPath {
     public static String UNWARN_WEBHOOK_THUMBNAIL = "unwarn.webhook-thumbnail";
     public static String UNWARN_WEBHOOK_COLOR = "unwarn.webhook-color";
     public static String UNWARN_FIELDS_SECTION = "unwarn.fields";
+
+    public static String ALTS_ENABLED = "alts.enabled";
+    public static String ALTS_WEBHOOK_URL = "alts.webhook-url";
+    public static String ALTS_WEBHOOK_TITLE = "alts.webhook-title";
+    public static String ALTS_WEBHOOK_THUMBNAIL = "alts.webhook-thumbnail";
+    public static String ALTS_WEBHOOK_COLOR = "alts.webhook-color";
+    public static String ALTS_FIELDS_SECTION = "alts.fields";
 }
