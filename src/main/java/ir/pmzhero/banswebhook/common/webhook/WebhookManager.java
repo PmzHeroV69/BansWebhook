@@ -118,6 +118,10 @@ public final class WebhookManager {
             return;
         }
 
+        title = title.replaceAll("§[0-9a-fk-or]", "");
+        reason = reason.replaceAll("§[0-9a-fk-or]", "");
+        duration = duration.replaceAll("§[0-9a-fk-or]", "");
+
         WebhookEmbed.EmbedField[] fields = new WebhookEmbed.EmbedField[pairs.size()];
 
         int i = -1;
@@ -130,6 +134,8 @@ public final class WebhookManager {
                     .replace("{reason}", reason)
                     .replace("{duration}", duration);
 
+            value = value.replaceAll("§[0-9a-fk-or]", "");
+
             fields[i] = new WebhookEmbed.EmbedField(config.isInlineWebhooks(), pair.getKey(), value);
         }
 
@@ -139,6 +145,9 @@ public final class WebhookManager {
                 .replace("{player}", name)
                 .replace("{reason}", reason)
                 .replace("{duration}", duration);
+
+        thumbnail = thumbnail
+                .replace("{player}", name);
 
         sendWebhook(client, title, thumbnail, color, fields);
     }
