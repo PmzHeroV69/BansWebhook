@@ -37,7 +37,7 @@ public final class WebhookManager {
         client.send(builder.build());
     }
 
-    public void sendAltsWebhook(List<String> names) {
+    public void sendAltsWebhook(String player, List<String> names) {
 
         Config config = bansWebhook.getConfig();
 
@@ -53,7 +53,7 @@ public final class WebhookManager {
         int i = -1;
         for (Pair<String, String> pair : pairs) {
             i++;
-            String value = pair.getValue().replace("{players}", String.join(", ", names));
+            String value = pair.getValue().replace("{player}", player).replace("{accounts}", String.join(", ", names));
 
             fields[i] = new WebhookEmbed.EmbedField(config.isInlineWebhooks(), pair.getKey(), value);
         }
@@ -170,6 +170,7 @@ public final class WebhookManager {
 
     public void loadWebhookClients(Config config) {
         try {
+            this.altsClient = WebhookClient.withUrl(config.getAltsWebhookUrl());
             this.banClient = WebhookClient.withUrl(config.getBanWebhookUrl());
             this.muteClient = WebhookClient.withUrl(config.getMuteWebhookUrl());
             this.warnClient = WebhookClient.withUrl(config.getWarnWebhookUrl());

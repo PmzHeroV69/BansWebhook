@@ -49,6 +49,6 @@ public class LitebansAltsListener implements Listener {
             return null;
         }).collect(Collectors.toList());
 
-        core.getWebhookManager().sendAltsWebhook(playerNames);
+        core.getWebhookManager().sendAltsWebhook(event.getPlayer().getName(), playerNames);
     }
 }
