@@ -62,4 +62,11 @@ public final class Config {
     private final String unwarnWebhookThumbnail;
     private final int unwarnWebhookColor;
     private final List<Pair<String, String>> unwarnWebhookFields;
+
+    private final boolean altsEnabled;
+    private final String altsWebhookUrl;
+    private final String altsWebhookTitle;
+    private final String altsWebhookThumbnail;
+    private final int altsWebhookColor;
+    private final List<Pair<String, String>> altsWebhookFields;
 }

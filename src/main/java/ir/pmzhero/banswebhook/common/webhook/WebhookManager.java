@@ -15,6 +15,7 @@ public final class WebhookManager {
 
     private final BansWebhook bansWebhook;
 
+    private WebhookClient altsClient;
     private WebhookClient banClient;
     private WebhookClient muteClient;
     private WebhookClient warnClient;
@@ -34,6 +35,30 @@ public final class WebhookManager {
         }
 
         client.send(builder.build());
+    }
+
+    public void sendAltsWebhook(String player, List<String> names) {
+
+        Config config = bansWebhook.getConfig();
+
+        if (!config.isAltsEnabled()) return;
+
+        String title = config.getAltsWebhookTitle();
+        String thumbnail = config.getAltsWebhookThumbnail();
+        int color = config.getAltsWebhookColor();
+        List<Pair<String, String>> pairs = config.getAltsWebhookFields();
+
+        WebhookEmbed.EmbedField[] fields = new WebhookEmbed.EmbedField[pairs.size()];
+
+        int i = -1;
+        for (Pair<String, String> pair : pairs) {
+            i++;
+            String value = pair.getValue().replace("{player}", player).replace("{accounts}", String.join(", ", names));
+
+            fields[i] = new WebhookEmbed.EmbedField(config.isInlineWebhooks(), pair.getKey(), value);
+        }
+
+        sendWebhook(altsClient, title, thumbnail, color, fields);
     }
 
     public void sendPunishmentWebhook(String executor, long id, String name, String reason, String duration, String type) {
@@ -145,6 +170,7 @@ public final class WebhookManager {
 
     public void loadWebhookClients(Config config) {
         try {
+            this.altsClient = WebhookClient.withUrl(config.getAltsWebhookUrl());
             this.banClient = WebhookClient.withUrl(config.getBanWebhookUrl());
             this.muteClient = WebhookClient.withUrl(config.getMuteWebhookUrl());
             this.warnClient = WebhookClient.withUrl(config.getWarnWebhookUrl());

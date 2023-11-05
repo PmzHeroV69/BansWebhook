@@ -58,7 +58,14 @@ public final class ConfigLoader {
                 ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_TITLE),
                 ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_THUMBNAIL),
                 Integer.parseInt(ymlConfig.getString(ConfigPath.UNWARN_WEBHOOK_COLOR), 16),
-                ymlConfig.getSectionKeys(ConfigPath.UNWARN_FIELDS_SECTION)
+                ymlConfig.getSectionKeys(ConfigPath.UNWARN_FIELDS_SECTION),
+
+                ymlConfig.getBoolean(ConfigPath.ALTS_ENABLED),
+                ymlConfig.getString(ConfigPath.ALTS_WEBHOOK_URL),
+                ymlConfig.getString(ConfigPath.ALTS_WEBHOOK_TITLE),
+                ymlConfig.getString(ConfigPath.ALTS_WEBHOOK_THUMBNAIL),
+                Integer.parseInt(ymlConfig.getString(ConfigPath.ALTS_WEBHOOK_COLOR), 16),
+                ymlConfig.getSectionKeys(ConfigPath.ALTS_FIELDS_SECTION)
         );
 
         manager.loadWebhookClients(config);

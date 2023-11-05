@@ -4,6 +4,7 @@ import ir.pmzhero.banswebhook.bungeecord.command.MainCommandBungee;
 import ir.pmzhero.banswebhook.bungeecord.data.BungeeConfigFile;
 import ir.pmzhero.banswebhook.bungeecord.data.BungeeYmlConfig;
 import ir.pmzhero.banswebhook.bungeecord.listener.AdvancedBanPunishmentListener;
+import ir.pmzhero.banswebhook.bungeecord.listener.LitebansAltsListener;
 import ir.pmzhero.banswebhook.common.BansWebhook;
 import ir.pmzhero.banswebhook.common.litebans.LitebansListener;
 import net.md_5.bungee.api.ChatColor;
@@ -25,6 +26,7 @@ public final class BansWebhookBungee extends Plugin {
         if (manager.getPlugin("LiteBans") != null) {
             hook = "LiteBans";
             LitebansListener.register(core);
+            manager.registerListener(this, new LitebansAltsListener(core));
         } else if (manager.getPlugin("AdvancedBan") != null) {
             hook = "AdvancedBan";
             manager.registerListener(this, new AdvancedBanPunishmentListener(core));
